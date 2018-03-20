@@ -1,5 +1,6 @@
 # FdF @ UNIT Factory
 First graphic project in UNIT Factory (school 42).
+
 A simple 3D height-map renderer. You can rotate, move and zoom models.
 
 Use of MiniLibX library.
