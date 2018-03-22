@@ -6,7 +6,7 @@
 #    By: vliubko <vliubko@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/06 18:46:49 by vliubko           #+#    #+#              #
-#    Updated: 2018/03/20 15:39:47 by vliubko          ###   ########.fr        #
+#    Updated: 2018/03/22 14:01:46 by vliubko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,19 +38,19 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY = all clean fclean re
 
-all: $(NAME)
-
-$(LIBFT):
-	@make -C libft
+all: lib $(NAME)
 
 $(OBJ): %.o: %.c $(HEADER)
 	@echo "\033[38;5;226m"
 	$(CC) -c $(CFLAGS) $< -o $@
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ) libft/libft.a
 	@$(CC) $(LDFLAGS) -o $@ $^
 	@echo ""
 	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
+
+lib:
+	@make -C libft
 
 clean:
 	@rm -f $(OBJ)
